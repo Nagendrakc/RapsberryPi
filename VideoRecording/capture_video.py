@@ -35,7 +35,7 @@ class MyCam:
 		self.cam.capture(filename)
     
 	def start_video_capture(self):   
-	    # filename fomat is "date_month_year_hour_.min.sec"
+	        # filename fomat is "date_month_year_hour_.min.sec"
 		# fileformat is *.h264
 		videofilename = video_path + dt.datetime.now().strftime("%d_%m_%Y_%H.%M.%S.h264")
 		# Available video resolution with camera
@@ -65,6 +65,8 @@ class MyCam:
 		self.cam.stop_recording()
 
 	def monitor_video_store_space(self):
+		# Monitor the storage space and make room for new video file. 
+		# This makes sure that the video is captured always
 		file_data = dict()
 		l = os.listdir(video_path)
 		total_size = sum(os.path.getsize(video_path+f) for f in l)/1024/1024
